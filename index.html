@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💛 มึงแจ๋วมาก! 💛</title>
+    <div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;900&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Kanit', sans-serif;
+                background: linear-gradient(45deg, #FFD700, #FFA500, #FFFF00, #FF8C00);
+                background-size: 400% 400%;
+                animation: gradientShift 8s ease infinite;
+                overflow-x: hidden;
+                min-height: 100vh;
+            }
+
+            @keyframes gradientShift {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .container {
+                position: relative;
+                z-index: 10;
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                text-align: center;
+                padding: 60px 0;
+                position: relative;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 8vw, 8rem);
+                font-weight: 900;
+                color: #2C1810;
+                text-shadow: 4px 4px 0px #FFB347, 8px 8px 20px rgba(0, 0, 0, 0.3);
+                margin-bottom: 30px;
+                animation: bounce 2s infinite;
+                letter-spacing: -2px;
+            }
+
+            @keyframes bounce {
+
+                0%,
+                20%,
+                50%,
+                80%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                40% {
+                    transform: translateY(-30px) scale(1.05);
+                }
+
+                60% {
+                    transform: translateY(-15px) scale(1.02);
+                }
+            }
+
+            .hero p {
+                font-size: clamp(1.2rem, 3vw, 2rem);
+                color: #5D4037;
+                font-weight: 600;
+                margin-bottom: 40px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                overflow: hidden;
+                /* ซ่อนส่วนเกินของรูป */
+                margin: 30px auto;
+                background: linear-gradient(45deg, #FFD700, #FFA500);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 10px 30px rgba(255, 165, 0, 0.5);
+                border: 5px solid #FFE135;
+                animation: rotate 10s linear infinite;
+
+            }
+
+            .decorative-images {
+                display: flex;
+                justify-content: space-around;
+                margin: 40px 0;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .image-circle {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #FFFACD, #FFE135);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+                animation: float 4s ease-in-out infinite;
+                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+                border: 3px solid #FFB347;
+                transition: all 0.3s ease;
+            }
+
+            .image-circle:hover {
+                transform: scale(1.1) rotate(360deg);
+                box-shadow: 0 15px 40px rgba(255, 165, 0, 0.6);
+            }
+
+            .image-circle:nth-child(1) {
+                animation-delay: 0s;
+            }
+
+            .image-circle:nth-child(2) {
+                animation-delay: 0.5s;
+            }
+
+            .image-circle:nth-child(3) {
+                animation-delay: 1s;
+            }
+
+            .image-circle:nth-child(4) {
+                animation-delay: 1.5s;
+            }
+
+            .image-circle:nth-child(5) {
+                animation-delay: 2s;
+            }
+
+            .floating-elements {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .star,
+            .heart,
+            .sparkle {
+                position: absolute;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .star {
+                font-size: 2rem;
+                animation-delay: var(--delay);
+            }
+
+            .heart {
+                font-size: 1.5rem;
+                animation-delay: var(--delay);
+                animation-duration: 4s;
+            }
+
+            .sparkle {
+                font-size: 1rem;
+                animation-delay: var(--delay);
+                animation-duration: 3s;
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateY(-100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            .message-cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin: 60px 0;
+            }
+
+            .card {
+                background: linear-gradient(135deg, #FFFACD 0%, #FFE135 100%);
+                padding: 40px;
+                border-radius: 25px;
+                box-shadow:
+                    0 20px 40px rgba(0, 0, 0, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                transform: perspective(1000px) rotateX(0deg);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                border: 3px solid #FFB347;
+            }
+
+            .card-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, #FFD700, #FFA500);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                margin: 0 auto 20px auto;
+                animation: pulse 2s infinite;
+                box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
+            }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transform: rotate(45deg);
+                animation: shimmer 3s infinite;
+            }
+
+            @keyframes shimmer {
+                0% {
+                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                }
+
+                100% {
+                    transform: translateX(100%) translateY(100%) rotate(45deg);
+                }
+            }
+
+            .card:hover {
+                transform: perspective(1000px) rotateX(-10deg) scale(1.05);
+                box-shadow:
+                    0 30px 60px rgba(0, 0, 0, 0.2),
+                    0 0 50px rgba(255, 215, 0, 0.5);
+            }
+
+            .card h3 {
+                font-size: 1.8rem;
+                color: #8B4513;
+                margin-bottom: 20px;
+                font-weight: 700;
+                position: relative;
+                z-index: 2;
+            }
+
+            .card p {
+                font-size: 1.2rem;
+                color: #5D4037;
+                line-height: 1.6;
+                font-weight: 500;
+                position: relative;
+                z-index: 2;
+            }
+
+            .big-button {
+                display: inline-block;
+                padding: 20px 60px;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #2C1810;
+                background: linear-gradient(45deg, #FFE135, #FFD700, #FFA500);
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                box-shadow: 0 15px 35px rgba(255, 165, 0, 0.4);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.05);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .big-button:hover {
+                transform: translateY(-5px) scale(1.1);
+                box-shadow: 0 25px 50px rgba(255, 165, 0, 0.6);
+            }
+
+            .big-button:active {
+                transform: translateY(0) scale(0.98);
+            }
+
+            .emoji-rain {
+                position: fixed;
+                top: -50px;
+                animation: fall 4s linear infinite;
+                font-size: 2rem;
+                pointer-events: none;
+                z-index: 5;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+
+            .power-text {
+                text-align: center;
+                margin: 80px 0;
+                position: relative;
+            }
+
+            .power-text h2 {
+                font-size: clamp(2rem, 5vw, 4rem);
+                font-weight: 900;
+                background: linear-gradient(45deg, #FF6B35, #F7931E, #FFD700);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+                animation: glow 2s ease-in-out infinite alternate;
+                margin-bottom: 20px;
+            }
+
+            @keyframes glow {
+                from {
+                    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+                }
+
+                to {
+                    filter: drop-shadow(0 0 40px rgba(255, 165, 0, 0.8));
+                }
+            }
+
+            .celebration {
+                text-align: center;
+                padding: 60px 20px;
+                background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.9));
+                border-radius: 30px;
+                margin: 40px 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .celebration::before {
+                content: '🎉🎊✨🐤🐔🌟💫⚡🔥🚀💛🌈🐤🐔';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 5rem;
+                opacity: 0.1;
+                animation: rotate 20s linear infinite;
+                white-space: nowrap;
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .celebration h2 {
+                font-size: 2.5rem;
+                color: #2C1810;
+                margin-bottom: 20px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .celebration p {
+                font-size: 1.3rem;
+                color: #5D4037;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 3rem;
+                }
+
+                .card {
+                    padding: 25px;
+                }
+
+                .big-button {
+                    padding: 15px 40px;
+                    font-size: 1.2rem;
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <section class="hero">
+        <h1>สวดยอดดดมาก! 💛</h1>
+        <div class="hero-image">
+            <img src="guide.jpg" alt="พลังบวก"
+                style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+
+        </div>
+        
+        <p>มาๆๆๆ! 🚀</p>
+        <button class="big-button" onclick="createEmojiRain()">ลองกดสิ!!!!
+            รั่วๆๆๆ ⚡</button>
+    </section>
+
+
+    <div class="decorative-images">
+        <div class="image-circle">🏆</div>
+        <div class="image-circle">💎</div>
+        <div class="image-circle">🚀</div>
+        <div class="image-circle">🌈</div>
+        <div class="image-circle">⚡</div>
+    </div>
+
+
+    <section class="message-cards">
+        <div class="celebration">
+            <div class="card-image">🌟</div>
+            <h3>🌟 เพื่อนคนนี้อยู่ข้างมึงเสมอ</h3>
+            <p>ไม่ว่าจะเจออะไร มึงก็ผ่านได้อยู่แล้ววว</p>
+        </div>
+
+        <div class="celebration">
+            <div class="card-image">🎯</div>
+            <h3>🎯 หยุดพักก็ได้ แต่ต้องกลับมาสู้!</h3>
+            <p>ท้อได้นะ ถ้าเหนื่อยก็พักก่อน หายก็มาลุยยยย!!!!</p>
+        </div>
+
+        <div class="celebration">
+            <div class="card-image">🔥</div>
+            <h3>🔥 เป็นตัวเองไปเถอะ มึงเจ๋งอยู่แล้ว</h3>
+            <p>ไม่ต้องไปแคร์ใคร 55555555</p>
+        </div>
+    </section>
+
+    <div class="power-text">
+        <h2>มึงเก่งอยู่แล้วววว! 💛✨</h2>
+    </div>
+    </div>
+
+    <script>
+        // สร้าง floating elements
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['🧪', '💛', '✨', , '🐤', '🌟', '💫', '⚡', '🔥', '🚀', '🐔', '🐤', '⚗️', '🧚'];
+
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                element.className = Math.random() > 0.7 ? 'star' : Math.random() > 0.5 ? 'heart' : 'sparkle';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.setProperty('--delay', Math.random() * 5 + 's');
+                container.appendChild(element);
+
+                setTimeout(() => {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                }, 6000);
+            }
+        }
+
+        // เริ่มสร้าง floating elements
+        setInterval(createFloatingElements, 2000);
+        createFloatingElements();
+
+        // ฝนอิโมจิ
+        function createEmojiRain() {
+            const emojis = ['🧪', '💛', '✨', , '🐤', '🌟', '💫', '⚡', '🔥', '🚀', '🐔', '🐤', '⚗️', '🧚'];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.className = 'emoji-rain';
+                    emoji.style.left = Math.random() * 100 + '%';
+                    emoji.style.animationDelay = Math.random() * 2 + 's';
+                    emoji.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    document.body.appendChild(emoji);
+
+                    setTimeout(() => {
+                        if (emoji.parentNode) {
+                            emoji.parentNode.removeChild(emoji);
+                        }
+                    }, 5000);
+                }, i * 100);
+            }
+
+            // เสียงแสดงความยินดี (จำลอง)
+            console.log('🎉 BOOM! กำลังใจเต็มพิกัด! 🎉');
+        }
+
+        // Auto emoji rain ทุก 10 วินาที
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createEmojiRain();
+            }
+        }, 10000);
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('.floating-elements').style.transform = `translateY(${rate}px)`;
+        });
+
+        // การ์ดลื่นไหว
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'perspective(1000px) rotateX(-10deg) scale(1.05)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>
